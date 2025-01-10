@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-//interacts with postgres db
+/*
+ * Encapsulates business logic and interacts with repository
+ */
 @Service
 public class UserService {
     private final UserRepository userRepository;

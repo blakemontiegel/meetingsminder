@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Table(name = "meetings")
 public class Meeting {
     @Id
-    private String id;
+    private Long id;
     private String name;
     @ManyToOne
     @JoinColumn(name = "organizer_id", nullable = false)
