@@ -51,6 +51,10 @@ public class User {
                 return meetings;
         }
 
+        public void setPassword(String encode) {
+                this.password = encode;
+        }
+
         @Override
         public String toString() {
                 return "User{" +

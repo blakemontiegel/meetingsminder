@@ -2,6 +2,9 @@ package com.blakemontiegel.meeting_efficiency_tracker.user;
 
 import org.springframework.stereotype.Service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -11,9 +14,23 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public void registerUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
+
+    public User authenticateUser(String email, String rawPassword) {
+        User user = userRepository.findByEmail(email).orElse(null);
+        if(user != null && passwordEncoder.matches(rawPassword, user.getPassword())) {
+            return user;
+        }
+        return null;
     }
 
     public User getUserById(String id) {
@@ -24,11 +41,8 @@ public class UserService {
         return user.get();
     }
 
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
-    }
-
-    public void saveUser(User user) {
-        userRepository.save(user);
     }
 }

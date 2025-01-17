@@ -39,10 +39,10 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@Valid @RequestBody User user) {
-        System.out.println("Received user: " + user);
-        userService.saveUser(user);
-    }
+//    @PostMapping("")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void createUser(@Valid @RequestBody User user) {
+//        System.out.println("Received user: " + user);
+//        userService.saveUser(user);
+//    }
 }
