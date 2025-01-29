@@ -1,4 +1,4 @@
-package com.blakemontiegel.meeting_efficiency_tracker.authentication;
+package com.blakemontiegel.meeting_efficiency_tracker.config;
 
 import com.blakemontiegel.meeting_efficiency_tracker.user.User;
 
