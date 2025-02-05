@@ -14,23 +14,9 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    public void registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-    }
-
-    public User authenticateUser(String username, String rawPassword) {
-        User user = userRepository.findByUsername(username).orElse(null);
-        if(user != null && passwordEncoder.matches(rawPassword, user.getPassword())) {
-            return user;
-        }
-        return null;
     }
 
     public User getUserById(String id) {

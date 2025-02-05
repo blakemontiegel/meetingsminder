@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/meetings")
+@RequestMapping("/api/v1/meetings")
 public class MeetingController {
     private final MeetingService meetingService;
 

@@ -20,7 +20,7 @@ import java.util.Optional;
 */
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
     private final UserService userService;
 
@@ -39,10 +39,4 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-//    @PostMapping("")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void createUser(@Valid @RequestBody User user) {
-//        System.out.println("Received user: " + user);
-//        userService.saveUser(user);
-//    }
 }
